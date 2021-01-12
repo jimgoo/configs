@@ -50,9 +50,6 @@
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
-;; Works for live greps you install ag searcher system package, call with M-x helm-do-ag
-					;(straight-use-package 'helm-ag)
-
 ;; enable scrolling through tmux
 (xterm-mouse-mode t)
 (global-set-key [mouse-4] 'scroll-down-line)
@@ -62,14 +59,14 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key "\C-l" 'goto-line)
-					; (global-set-key "\M-[" 'tabbar-backward)
-					; (global-set-key "\M-]" 'tabbar-forward)
+; (global-set-key "\M-[" 'tabbar-backward)
+; (global-set-key "\M-]" 'tabbar-forward)
 (global-set-key "\C-r" 'comment-region)
 (global-set-key "\C-t" 'uncomment-region)
-					; (global-set-key "\C-i" 'indent-region)
+; (global-set-key "\C-i" 'indent-region)
 
 ;; copy-paste to terminal
-					; (setq x-select-enable-clipboard t)
+; (setq x-select-enable-clipboard t)
 
 ;; color theme setting
 (straight-use-package 'color-theme-modern)
