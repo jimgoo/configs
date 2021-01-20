@@ -24,15 +24,9 @@
 
 ;; tab-bar for open files
 (straight-use-package 'tabbar)
-;;(customize-set-variable 'tabbar-background-color "gray20")
 (customize-set-variable 'tabbar-separator '(2.0))
 (customize-set-variable 'tabbar-use-images nil)
 (tabbar-mode)
-
-;; line numbers
-;;(global-linum-mode 1)
-;; rule and margin after line numbers
-;;(setq linum-format "%4d \u2502 ")
 
 ;; auto-completion
 (straight-use-package 'auto-complete)
@@ -50,10 +44,19 @@
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
+;;----------------------------------------------------------------------------------
+;; key mappings
+
 ;; enable scrolling through tmux
 (xterm-mouse-mode t)
 (global-set-key [mouse-4] 'scroll-down-line)
 (global-set-key [mouse-5] 'scroll-up-line)
+
+;; Turn CUA mode on
+(cua-mode t)
+    (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
+    (transient-mark-mode 1)               ;; No region when it is not highlighted
+    (setq cua-keep-region-after-copy t)
 
 ;; Take y for yes, n for no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -68,16 +71,39 @@
 ;; copy-paste to terminal
 ; (setq x-select-enable-clipboard t)
 
+;;----------------------------------------------------------------------------------
 ;; color theme setting
-(straight-use-package 'color-theme-modern)
-(load-theme 'calm-forest t t)
-(enable-theme 'calm-forest)
+;; (straight-use-package 'color-theme-modern)
+;; (load-theme 'calm-forest t t)
+;; (enable-theme 'calm-forest)
 
-;; Turn CUA mode on
-(cua-mode t)
-(setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
-(transient-mark-mode 1)               ;; No region when it is not highlighted
-(setq cua-keep-region-after-copy t) 
+;(straight-use-package 'sublime-themes)
+;(load-theme 'brin t)
+;(load-theme 'spolsky t)
+;(load-theme 'odersky t)
+;(load-theme 'hickey t)
+
+;(straight-use-package 'monokai-theme)
+;(load-theme 'monokai t)
+
+;; (straight-use-package 'zenburn-theme)
+;; (load-theme 'zenburn t)
+
+;(straight-use-package 'solarized-theme)
+;(load-theme 'solarized-dark t)
+
+;(straight-use-package 'spacemacs-theme)
+;(load-theme 'spacemacs-dark)
+;(enable-theme 'spacemacs-dark)
+
+(straight-use-package 'spacemacs-theme)
+(load-theme 'spacemacs-dark t)
+
+(straight-use-package 'spaceline)
+;;(spaceline-spacemacs-theme)
+(spaceline-emacs-theme)
+
+;;----------------------------------------------------------------------------------
 
 ;; backup in one place. flat, no tree structure
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
@@ -89,9 +115,21 @@
 ;;(elpy-enable)
 
 ;;(straight-use-package 'color-identifiers-mode)
-;;(add-hook 'after-init-hook 'global-color-identifiers-mode)
 
-;; Yaml mode
-(straight-use-package 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+;;----------------------------------------------------------------------------------
+;;(add-hook 'after-init-hook 'global-color-identifiers-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "1a094b79734450a146b0c43afb6c669045d7a8a5c28bc0210aba28d36f85d86f" default))
+ '(tabbar-separator '(2.0))
+ '(tabbar-use-images nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
