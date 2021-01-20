@@ -1,3 +1,10 @@
+
+## Add this to top of ~/.zshrc in order for TMUX to not set the path twice (breaks conda).
+# if [ -x /usr/libexec/path_helper ]; then
+#   PATH="" # Add this line
+#   eval `/usr/libexec/path_helper -s`
+# fi
+
 # Need to logout and log back in order for these to take effect.
 
 # Increase key repeat speeds beyond which they can be set in the settings UI

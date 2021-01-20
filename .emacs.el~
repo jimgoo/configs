@@ -44,10 +44,6 @@
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
-;; git integration
-(straight-use-package 'magit)
-
-
 ;;----------------------------------------------------------------------------------
 ;; key mappings
 
@@ -71,7 +67,7 @@
 (global-set-key "\C-r" 'comment-region)
 (global-set-key "\C-t" 'uncomment-region)
 ; (global-set-key "\C-i" 'indent-region)
-
+n
 ;; copy-paste to terminal
 ; (setq x-select-enable-clipboard t)
 
@@ -116,13 +112,8 @@
 ;; stop creating those #auto-save# files
 (setq auto-save-default nil)
 
-(straight-use-package 'elpy)
-(elpy-enable)
-
-;; Enable Flycheck
-;; (when (require 'flycheck nil t)
-;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+;;(straight-use-package 'elpy)
+;;(elpy-enable)
 
 ;;(straight-use-package 'color-identifiers-mode)
 
