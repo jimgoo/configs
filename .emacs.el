@@ -116,8 +116,8 @@
 ;; stop creating those #auto-save# files
 (setq auto-save-default nil)
 
-(straight-use-package 'elpy)
-(elpy-enable)
+;;(straight-use-package 'elpy)
+;;(elpy-enable)
 
 ;; Enable Flycheck
 ;; (when (require 'flycheck nil t)
