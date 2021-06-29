@@ -47,7 +47,6 @@
 ;; git integration
 (straight-use-package 'magit)
 
-
 ;;----------------------------------------------------------------------------------
 ;; key mappings
 
@@ -66,8 +65,6 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key "\C-l" 'goto-line)
-; (global-set-key "\M-[" 'tabbar-backward)
-; (global-set-key "\M-]" 'tabbar-forward)
 (global-set-key "\C-r" 'comment-region)
 (global-set-key "\C-t" 'uncomment-region)
 ; (global-set-key "\C-i" 'indent-region)
@@ -75,8 +72,33 @@
 ;; copy-paste to terminal
 ; (setq x-select-enable-clipboard t)
 
+;; backup in one place. flat, no tree structure
+(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
+
+;; stop creating those #auto-save# files
+(setq auto-save-default nil)
+
+;;(straight-use-package 'elpy)
+;;(elpy-enable)
+
+;; Enable Flycheck
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+(straight-use-package 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
+;; disable annoying Ctrl+z shortcut that exits to background
+;; and requires `fg` command to resume
+(global-unset-key (kbd "C-z"))
+
 ;;----------------------------------------------------------------------------------
 ;; color theme setting
+
+;;(straight-use-package 'color-identifiers-mode)
+
 ;; (straight-use-package 'color-theme-modern)
 ;; (load-theme 'calm-forest t t)
 ;; (enable-theme 'calm-forest)
@@ -93,12 +115,12 @@
 ;(load-theme 'monokai t)
 
 ;; too bright for a dark theme
-;;(straight-use-package 'zenburn-theme)
-;;(load-theme 'zenburn t)
+;(straight-use-package 'zenburn-theme)
+;(load-theme 'zenburn t)
 
 ;; gives blue background
-;; (straight-use-package 'solarized-theme)
-;; (load-theme 'solarized-dark t)
+;(straight-use-package 'solarized-theme)
+;(load-theme 'solarized-dark t)
 
 (straight-use-package 'spacemacs-theme)
 (load-theme 'spacemacs-dark t)
@@ -108,23 +130,10 @@
 ;;(spaceline-spacemacs-theme)
 ;(spaceline-emacs-theme)
 
-;;----------------------------------------------------------------------------------
+;; can't see list of autocompletions due to same color background as text
+;; (straight-use-package 'doom-themes)
+;; (load-theme 'doom-one t)
 
-;; backup in one place. flat, no tree structure
-(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
-
-;; stop creating those #auto-save# files
-(setq auto-save-default nil)
-
-;;(straight-use-package 'elpy)
-;;(elpy-enable)
-
-;; Enable Flycheck
-;; (when (require 'flycheck nil t)
-;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-;;(straight-use-package 'color-identifiers-mode)
 
 ;;----------------------------------------------------------------------------------
 ;;(add-hook 'after-init-hook 'global-color-identifiers-mode)
