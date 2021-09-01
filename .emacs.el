@@ -90,6 +90,8 @@
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
+(straight-use-package 'markdown-mode)
+
 ;; disable annoying Ctrl+z shortcut that exits to background
 ;; and requires `fg` command to resume
 (global-unset-key (kbd "C-z"))
