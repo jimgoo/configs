@@ -28,6 +28,24 @@
 (customize-set-variable 'tabbar-use-images nil)
 (tabbar-mode)
 
+;; customize tab organization
+
+;; to show all normal files in one group
+;; (setq tabbar-buffer-groups-function
+;;       (lambda ()
+;; 	(list "All")))
+
+;; to show two groups, user and emacs
+(defun my-tabbar-buffer-groups ()
+      "Returns the name of the tab group names the current buffer belongs to.
+    There are two groups: Emacs buffers (those whose name starts with '*', plus
+    dired buffers), and the rest.  This works at least with Emacs v24.2 using
+    tabbar.el v1.7."
+      (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
+                  ((eq major-mode 'dired-mode) "emacs")
+                  (t "user"))))
+    (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
+
 ;; auto-completion
 (straight-use-package 'auto-complete)
 (global-auto-complete-mode t)
@@ -46,6 +64,14 @@
 
 ;; git integration
 (straight-use-package 'magit)
+
+;; confirm before closing
+(setq confirm-kill-emacs 'y-or-n-p)
+
+;; auto-reload any open buffers that were modified
+(global-auto-revert-mode 1)
+;; auto refresh dired when file changes
+(add-hook 'dired-mode-hook 'auto-revert-mode)
 
 ;;----------------------------------------------------------------------------------
 ;; key mappings
@@ -78,6 +104,32 @@
 ;; stop creating those #auto-save# files
 (setq auto-save-default nil)
 
+;; disable annoying Ctrl+z shortcut that exits to background
+;; and requires `fg` command to resume
+(global-unset-key (kbd "C-z"))
+
+;; undo/redo like normal
+(straight-use-package 'undo-tree)
+
+;; delete selection when typing over it
+(delete-selection-mode 1)
+
+;;----------------------------------------------------------------------------------
+;; language modes
+
+;; yaml mode
+(straight-use-package 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
+;; docker mode
+(straight-use-package 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+;; markdown syntax highlighting
+(straight-use-package 'markdown-mode)
+
+;; python coding
 ;;(straight-use-package 'elpy)
 ;;(elpy-enable)
 
@@ -86,15 +138,42 @@
 ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
 ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-(straight-use-package 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+(straight-use-package 'flycheck)
+;; permanently enable syntax checking with Flycheck
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(straight-use-package 'markdown-mode)
+;;Anaconda support
+;(straight-use-package 'conda)
+;(setq conda-env-home-directory "/home/jimmie/miniconda3")
+;;get current environment--from environment variable CONDA_DEFAULT_ENV
+;(conda-env-activate 'getenv "CONDA_DEFAULT_ENV")
+;(conda-env-autoactivate-mode t)
+;(setq-default mode-line-format (cons mode-line-format '(:exec conda-env-current-name)))
 
-;; disable annoying Ctrl+z shortcut that exits to background
-;; and requires `fg` command to resume
-(global-unset-key (kbd "C-z"))
+;;----------------------------------------------------------------------------------
+;; project navigation tree
+
+(straight-use-package 'neotree)
+;; NeoTree can be opened (toggled) at projectile project root as follows
+(setq projectile-switch-project-action 'neotree-projectile-action)
+(defun neotree-project-dir ()
+    "Open NeoTree using the git root."
+    (interactive)
+    (let ((project-dir (projectile-project-root))
+          (file-name (buffer-file-name)))
+      (neotree-toggle)
+      (if project-dir
+          (if (neo-global--window-exists-p)
+              (progn
+                (neotree-dir project-dir)
+                (neotree-find file-name)))
+        (message "Could not find git project root."))))
+
+;; default toggle method (no projectile)
+;; (global-set-key [f8] 'neotree-toggle)
+
+;; projectile toggle method: highlights opened file in tree for projects
+(global-set-key [f8] 'neotree-project-dir)
 
 ;;----------------------------------------------------------------------------------
 ;; color theme setting
@@ -136,8 +215,9 @@
 ;; (straight-use-package 'doom-themes)
 ;; (load-theme 'doom-one t)
 
-
 ;;----------------------------------------------------------------------------------
+;; custom
+
 ;;(add-hook 'after-init-hook 'global-color-identifiers-mode)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
