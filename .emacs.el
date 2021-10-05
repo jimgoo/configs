@@ -66,7 +66,7 @@
 (straight-use-package 'magit)
 
 ;; confirm before closing
-(setq confirm-kill-emacs 'y-or-n-p)
+;(setq confirm-kill-emacs 'y-or-n-p)
 
 ;; auto-reload any open buffers that were modified
 (global-auto-revert-mode 1)
@@ -149,6 +149,9 @@
 ;(conda-env-activate 'getenv "CONDA_DEFAULT_ENV")
 ;(conda-env-autoactivate-mode t)
 ;(setq-default mode-line-format (cons mode-line-format '(:exec conda-env-current-name)))
+
+;; R (Emacs Speaks Statistics)
+(straight-use-package 'ess)
 
 ;;----------------------------------------------------------------------------------
 ;; project navigation tree
