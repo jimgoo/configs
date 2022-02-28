@@ -1,6 +1,9 @@
 
 plugins=(git)
 
+# aliases
+alias ll='ls -alF'
+
 # add scripts
 export PATH="/Users/jimgoo/git/configs/scripts:$PATH"
 
