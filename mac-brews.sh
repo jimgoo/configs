@@ -8,5 +8,6 @@ brew install \
      htop \
      tree \
      wget \
+     curl \
      gh
 
