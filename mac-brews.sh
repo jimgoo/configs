@@ -9,5 +9,6 @@ brew install \
      tree \
      wget \
      curl \
-     gh
+     gh \
+     emacs27
 
