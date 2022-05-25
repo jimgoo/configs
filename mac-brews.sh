@@ -1,7 +1,8 @@
 set -e
 
-# install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# install brew with:
+#    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# you need to run some other command that gets printed out when it's done
 
 # brew packages
 brew install \
@@ -10,5 +11,11 @@ brew install \
      wget \
      curl \
      gh \
-     emacs27
+     emacs \
+     autossh \
+     imagemagick \
+     gnupg \
+     git-lfs
+
+
 

@@ -206,8 +206,9 @@
 ;(straight-use-package 'solarized-theme)
 ;(load-theme 'solarized-dark t)
 
-(straight-use-package 'spacemacs-theme)
-(load-theme 'spacemacs-dark t)
+;; used this one for a while, works well
+;; (straight-use-package 'spacemacs-theme)
+;; (load-theme 'spacemacs-dark t)
 
 ;; clicking through the file name can't be done with this as easily
 ;(straight-use-package 'spaceline)
@@ -217,6 +218,10 @@
 ;; can't see list of autocompletions due to same color background as text
 ;; (straight-use-package 'doom-themes)
 ;; (load-theme 'doom-one t)
+
+(straight-use-package 'modus-themes)
+(modus-themes-load-themes)
+(modus-themes-load-vivendi)
 
 ;;----------------------------------------------------------------------------------
 ;; custom
@@ -228,7 +233,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "1a094b79734450a146b0c43afb6c669045d7a8a5c28bc0210aba28d36f85d86f" default))
+   '("02fff7eedb18d38b8fd09a419c579570673840672da45b77fde401d8708dc6b5" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "1a094b79734450a146b0c43afb6c669045d7a8a5c28bc0210aba28d36f85d86f" default))
  '(tabbar-separator '(2.0))
  '(tabbar-use-images nil))
 (custom-set-faces
