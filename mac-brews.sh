@@ -15,7 +15,9 @@ brew install \
      autossh \
      imagemagick \
      gnupg \
-     git-lfs
+     git-lfs \
+     watch
+     # docker
 
 
 
