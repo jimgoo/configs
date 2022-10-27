@@ -21,3 +21,6 @@ cp .bashrc .bash_prompt ~/
 cp .emacs.el ~/
 
 echo 'export PATH="/venv/bin:$PATH"' >> ~/.bashrc
+
+cd /workspace/git
+git clone git@github.com:jimgoo/medical.git
