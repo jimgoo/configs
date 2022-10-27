@@ -24,3 +24,6 @@ echo 'export PATH="/venv/bin:$PATH"' >> ~/.bashrc
 
 cd /workspace/git
 git clone git@github.com:jimgoo/medical.git
+
+git config --global user.name "jimgoo"
+git config --global user.email "jimmiegoode@gmail.com"
