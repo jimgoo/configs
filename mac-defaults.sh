@@ -1,11 +1,5 @@
 
-## Add this to top of ~/.zshrc in order for TMUX to not set the path twice (breaks conda).
-# if [ -x /usr/libexec/path_helper ]; then
-#   PATH="" # Add this line
-#   eval `/usr/libexec/path_helper -s`
-# fi
-
-# Need to logout and log back in order for these to take effect.
+# Need to logout and back in order for these to take effect.
 
 # Increase key repeat speeds beyond which they can be set in the settings UI
 # https://apple.stackexchange.com/questions/10467/how-to-increase-keyboard-key-repeat-rate-on-os-x
@@ -20,7 +14,7 @@ defaults write -g com.apple.trackpad.scaling -float 6.0
 # Note that this gets reset if you change the mouse speed via the slider in Settings.app
 # https://apple.stackexchange.com/questions/15210/how-to-increase-tracking-speed-beyond-the-maximum
 defaults write -g com.apple.mouse.scaling -float 6.0
-
+# reading it returns 3 on fast mouse...
 
 ## From: https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
